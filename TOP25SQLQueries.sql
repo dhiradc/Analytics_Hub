@@ -1,4 +1,5 @@
-💡 Medium Level:1️⃣ Write a query to find the second highest salary in an employee table.
+💡 Medium Level:
+1️⃣ Write a query to find the second highest salary in an employee table.
 create table Employees
 (
   Employee_ID integer,
@@ -10,6 +11,7 @@ insert into Employees values (1,'JOHN', 7000), (2,'SARAH', 9000), (3,'JOSE', 500
 
 select Employees.Employee_ID, Employees.Employee_Name from Employees ORDER BY Employees.Employee_Salary DESC  LIMIT 1 OFFSET 1;
 /*this is if there are no duplicate salaries. If there is a duplicate then we have to use DENSE_RANK() function.*/
+
 2️⃣ Fetch all employees whose names contain the letter “a” exactly twice.
 WITH CountofEmployees AS
 (SELECT 
@@ -21,6 +23,7 @@ FROM
 select E.first_name, E.last_name from employees E
 JOIN CountofEmployees CE ON CE.first_name = E.first_name
 where CE.occurrence_count = 2;
+
 3️⃣ How do you retrieve only duplicate records from a table?
 Create TABLE Duplicates
 (
@@ -76,10 +79,12 @@ from employees E JOIN AVGSalaryDept ASD
 ON E.department_id = ASD.department_id
 WHERE E.salary > ASD.AVGDeptSalary
 ORDER BY E.department_id;
+
 6️⃣ Write a query to find the most frequently occurring value in a column.
 /* This query can be changed to find second most, third mosrt or any number as its using DENSE_RANK() function which ranks each group uniquely. Using a LIMIT keyword will only return one result which might not be correct
 if the table can contain duplicate values for count of value occuring in the column count.
 Here, I have used the same employee table and tried to find the most frequently occuring department_id for the column department_id*/
+
 WITH GROUPEDOCCURANCE AS
 (SELECT department_id, 
  		COUNT(department_id) as frequency,
@@ -88,6 +93,7 @@ FROM employees
 GROUP by department_id)
 
 select department_id,frequency from GROUPEDOCCURANCE where DRN = 1;
+
 7️⃣ Fetch records where the date is within the last 7 days from today.
 CREATE TABLE PurchasesToday
 (
@@ -200,10 +206,10 @@ create table Purchases
 );
 
 insert into Customers values (1,'Alice Smith','alice@email.com','2023-08-15'),(2,'Bob Johnson','bob@email.com','2023-10-20'),(3,'Charlie Lee','charlie@email.com','2024-01-05'),
-							(4,'David Brown','david@email.com','2024-02-18'),(5,'Alice Rock','R_Alice@email.com','2024-08-15'),(6,'Bob Marley','bob_marley@email.com','2024-10-20');
+						(4,'David Brown','david@email.com','2024-02-18'),(5,'Alice Rock','R_Alice@email.com','2024-08-15'),(6,'Bob Marley','bob_marley@email.com','2024-10-20');
 insert into Purchases values (101,1,'2023-09-01',50),(102,2,'2023-11-05',100),(103,3,'2024-01-10',75),(104,4,'2024-02-20',200),
-							(105,1,'2023-10-01',50),(106,2,'2023-12-05',100),(107,3,'2024-10-10',75),(108,4,'2024-05-20',200),
-                            (109,1,'2024-09-30',200), (110,2, '2025-01-01',500),(111,5,'2024-10-01',50),(112,5,'2024-11-05',100),(113,6,'2025-01-10',75),(114,6,'2025-02-20',200);
+					   (105,1,'2023-10-01',50),(106,2,'2023-12-05',100),(107,3,'2024-10-10',75),(108,4,'2024-05-20',200),
+                                     (109,1,'2024-09-30',200), (110,2, '2025-01-01',500),(111,5,'2024-10-01',50),(112,5,'2024-11-05',100),(113,6,'2025-01-10',75),(114,6,'2025-02-20',200);
 
 select customer_id, MIN(purchase_date) as first_purchase_date from Purchases 
 group by customer_id
@@ -285,12 +291,13 @@ insert into Employees values (1,'JOHN', 7000), (2,'SARAH', 9000), (3,'JOSE', 500
 WITH CTE AS
 (select *,
 		ROW_NUMBER() OVER(ORDER BY Employee_Salary ASC) as RN_ASC,
-        ROW_NUMBER() OVER(ORDER BY Employee_Salary DESC) as RN_DESC        
+        	ROW_NUMBER() OVER(ORDER BY Employee_Salary DESC) as RN_DESC        
 from Employees)
 
 select AVG(Employee_Salary) from CTE WHERE ABS(RN_ASC - RN_DESC) <= 1;
 /* this query will work for both even number of records as well as odd number of records*/
-5️⃣ Fetch all users who logged in consecutively for 3 days or more.
+
+5️⃣ Fetch all users who logged in consecutively for 3 days
 CREATE TABLE user_logins (
     user_id INTEGER NOT NULL,
     login_date DATE NOT NULL
@@ -366,7 +373,8 @@ WITH RATIOCOUNT AS
  		ROW_NUMBER() OVER (ORDER BY (SELECT 1)) AS RN
  from sales_data group by category)
 SELECT ROUND((SELECT TotalSales from RATIOCOUNT where RN = 1)*1.0/(SELECT TotalSales from RATIOCOUNT where RN = 2),2) as Sales_Ratio;
-/* This query is very generic provided there are only two categories of products in the master data table. You dont need to know the category names as you are applying row number to the two rows of summation achieved.*/Duplicates
+/* This query is very generic provided there are only two categories of products in the master data table. You dont need to know the category names as you are applying row number to the two rows of summation achieved.*/
+
 8️⃣ How would you implement a recursive query to generate a hierarchical structure?
 CREATE TABLE employees (
     id INTEGER PRIMARY KEY,
@@ -446,3 +454,160 @@ RecursiveMissing AS (
     WHERE MissingNumber + 1 < Current_Value
 )
 SELECT MissingNumber FROM RecursiveMissing;
+
+💡 Advanced Problem-Solving:
+1️⃣ Rank products by sales in descending order for each region.
+CREATE TABLE product_sales (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    region TEXT NOT NULL,
+    product_name TEXT NOT NULL,
+    sales_amount NUMERIC NOT NULL
+);
+
+INSERT INTO product_sales (region, product_name, sales_amount) VALUES
+('North', 'Laptop', 50000),('North', 'Smartphone', 75000),('North', 'Tablet', 40000),('North', 'Headphones', 25000),('North', 'Smartwatch', 30000),('South', 'Laptop', 60000),('South', 'Smartphone', 80000),
+('South', 'Tablet', 45000),('South', 'Headphones', 20000),('South', 'Smartwatch', 35000),('East', 'Laptop', 70000),('East', 'Smartphone', 85000),('East', 'Tablet', 42000),('East', 'Headphones', 30000),
+('East', 'Smartwatch', 32000),('West', 'Laptop', 65000),('West', 'Smartphone', 90000),('West', 'Tablet', 48000),('West', 'Headphones', 28000),('West', 'Smartwatch', 34000);
+
+select region, product_name, sales_amount,
+  		 DENSE_RANK() OVER(PARTITION BY region Order by sales_amount DESC) as RankedProducts
+from product_sales;
+
+2️⃣ Fetch all employees whose salaries fall within the top 10% of their department.
+CREATE TABLE EmployeesDepartment
+(
+  employee_id integer,
+  department_id integer,
+  salary integer
+);
+
+INSERT INTO EmployeesDepartment values
+(1,1,17000),(2,1,18000),(3,1,17000),(4,1,28000),(5,1,19000),(6,1,18500),(7,1,25000),(8,1,15500),(9,1,70000),(10,1,20000),
+(11,2,16000),(12,2,17500),(13,2,25000),(14,2,21500),(15,2,26000),(16,2,37500),(17,2,46000),(18,2,20000),(19,2,36000),(20,2,37500),
+(21,3,90000),(22,3,70000),(23,3,80000),(24,3,30000),(25,3,20000),(26,3,14000),(27,3,23000),(28,3,34000),(29,3,60000),(30,3,54000),(31,3,67000);
+
+WITH SalaryRank AS (
+select employee_id, department_id, salary, 
+  RANK() OVER (PARTITION BY department_id ORDER BY salary DESC) AS salary_rank,
+  COUNT(*) OVER (PARTITION BY department_id) AS total_employees from EmployeesDepartment
+)
+SELECT employee_id, department_id, salary
+FROM SalaryRank
+WHERE salary_rank <= (0.10*total_employees);
+
+3️⃣ Identify orders placed during business hours (e.g., 9 AM to 6 PM).
+CREATE TABLE OrdersPlaced (
+    order_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    customer_id INTEGER NOT NULL,
+    order_datetime DATETIME NOT NULL
+);
+
+INSERT INTO OrdersPlaced (customer_id, order_datetime) VALUES
+(101, '2024-03-01 08:30:00'), -- Before business hours
+(102, '2024-03-01 09:15:00'), -- Business hours
+(103, '2024-03-01 10:45:00'), -- Business hours
+(104, '2024-03-01 12:30:00'), -- Business hours
+(105, '2024-03-01 14:00:00'), -- Business hours
+(106, '2024-03-01 17:55:00'), -- Business hours
+(107, '2024-03-01 18:05:00'), -- After business hours
+(108, '2024-03-01 20:45:00'), -- After business hours
+(109, '2024-03-02 09:30:00'), -- Business hours
+(110, '2024-03-02 15:15:00'), -- Business hours
+(111, '2024-03-02 16:45:00'), -- Business hours
+(112, '2024-03-02 18:10:00'), -- After business hours
+(113, '2024-03-02 07:50:00'), -- Before business hours
+(114, '2024-03-02 11:25:00'), -- Business hours
+(115, '2024-03-02 14:35:00'), -- Business hours
+(116, '2024-03-02 17:50:00'), -- Business hours
+(117, '2024-03-02 21:30:00'), -- After business hours
+(118, '2024-03-03 10:10:00'), -- Business hours
+(119, '2024-03-03 12:05:00'), -- Business hours
+(120, '2024-03-03 19:20:00'); -- After business hours 
+
+SELECT * FROM OrdersPlaced
+WHERE strftime('%H', order_datetime) BETWEEN '09' AND '17';
+
+4️⃣ Write a query to get the count of users active on both weekdays and weekends.
+CREATE TABLE UserLoginData (
+    login_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER NOT NULL,
+    login_datetime DATETIME NOT NULL
+);
+
+INSERT INTO UserLoginData (user_id, login_datetime) VALUES
+(1, '2024-03-01 08:15:00'), -- Weekday
+(1, '2024-03-02 09:00:00'), -- Weekend
+(1, '2024-03-03 18:30:00'), -- Weekend
+(2, '2024-03-01 09:00:00'), -- Weekday
+(2, '2024-03-02 14:00:00'), -- Weekend
+(2, '2024-03-03 08:45:00'), -- Weekend
+(3, '2024-03-01 08:00:00'), -- Weekday
+(3, '2024-03-03 10:30:00'), -- Weekend
+(3, '2024-03-04 11:00:00'), -- Weekday
+(4, '2024-03-01 16:15:00'), -- Weekday
+(4, '2024-03-02 15:30:00'), -- Weekend
+(4, '2024-03-03 13:00:00'), -- Weekend
+(5, '2024-03-01 07:45:00'), -- Weekday
+(5, '2024-03-05 09:30:00'), -- Weekday
+(6, '2024-03-01 17:00:00'), -- Weekday
+(6, '2024-03-04 19:15:00'), -- Weekday
+(7, '2024-03-02 20:00:00'), -- Weekend
+(7, '2024-03-03 21:30:00'), -- Weekend
+(8, '2024-03-02 11:00:00'), -- Weekend
+(8, '2024-03-03 12:00:00'); -- Weekend
+
+WITH detect AS
+(
+select 	user_id, 
+		login_datetime, 
+		case when strftime('%w', login_datetime) in ('0', '6') then 1 else 0 end as is_weekend -- here 1 means its weekend, 0 means its weekday
+from UserLoginData
+),
+loginBothDays AS(
+select user_id,
+		SUM(CASE WHEN is_weekend = 1 THEN 1 ELSE 0 END) as CNTWE,
+        	SUM(CASE WHEN is_weekend = 0 THEN 1 ELSE 0 END) as CNTWD
+from detect
+group by user_id)
+
+select COUNT(DISTINCT user_id) from loginBothDays where CNTWE > 0 AND CNTWD > 0;
+
+5️⃣ Retrieve customers who made purchases across at least three different categories.
+create table CustomerSales(
+sale_id INTEGER PRIMARY KEY,
+customer_id INTEGER,
+product_id INTEGER,
+sale_date DATE);
+create table Products
+(
+  product_id integer,
+  product_name string,
+  product_category string
+);
+
+INSERT INTO CustomerSales (sale_id, customer_id, product_id, sale_date) VALUES
+(1, 1, 101, '2024-01-01'),
+(2, 1, 102, '2024-01-02'),
+(3, 1, 103, '2024-01-03'),
+(4, 2, 101, '2024-01-04'),
+(5, 2, 102, '2024-01-05'),
+(6, 3, 101, '2024-01-06'),
+(7, 3, 102, '2024-01-07'),
+(8, 3, 103, '2024-01-08'),
+(9, 3, 104, '2024-01-09'),
+(10, 4, 101, '2024-01-10'),
+(11, 4, 102, '2024-01-11'),
+(12, 4, 103, '2024-01-12'),
+(13, 5, 102, '2024-01-11'),
+(14, 5, 101, '2024-01-12'),
+(15, 6, 102, '2024-02-11');
+
+insert into Products values (101,'IPhone16', 'Smartphone'),(102, 'IPad', 'Tablet'),(103, '13"M2', 'Macbook'),(104, 'DellWasher', 'Washer');
+
+WITH CustomerPurchaseCategory AS(
+select C.customer_id, C.product_id, P.product_category as ProductCategory
+from CustomerSales C JOIN Products P ON C.product_id = P.product_id),
+DetectCategoryCount AS
+( select customer_id, COUNT(DISTINCT ProductCategory) as ProductsPurchased from CustomerPurchaseCategory group by customer_id)
+
+select customer_id from DetectCategoryCount where ProductsPurchased >= 3;
