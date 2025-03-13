@@ -455,6 +455,23 @@ RecursiveMissing AS (
 )
 SELECT MissingNumber FROM RecursiveMissing;
 
+🔟 Split FULL NAME in first name and last name
+CREATE TABLE UserName
+(
+  id integer,
+  fullname string
+ );
+ 
+ INSERT INTO UserName values
+ (1, 'JOHN DOE'),
+ (2, 'SARAH SMITH'),
+ (3, 'JOE HANK');
+
+SELECT 
+SUBSTRING(fullname, 1, CHARINDEX(' ', fullname) - 1) AS FirstName, 
+SUBSTRING(fullname, CHARINDEX(' ', fullname) + 1, length(fullname)) AS LastName
+FROM UserName;
+
 💡 Advanced Problem-Solving:
 1️⃣ Rank products by sales in descending order for each region.
 CREATE TABLE product_sales (
