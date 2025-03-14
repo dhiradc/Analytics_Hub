@@ -45,6 +45,3 @@
       🎨 Tableau Public Gallery
 
 
-If you’d like to contribute additional exercises or improvements, feel free to fork the repository and submit a pull request.
-
-
