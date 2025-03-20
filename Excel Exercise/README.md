@@ -11,11 +11,13 @@ This repository includes Excel files covering:
 - 📉 **Data Cleaning & Transformation** – Removing duplicates, data validation, text functions  
  
 **Heathcare_Claims_Analysis**
+
 📝 Overview
 
 This Excel dataset titled "Healthcare_Claims_Analysis.xlsx" includes comprehensive information on healthcare claims. The goal of this repository is to perform data analysis and visualization on the claims data to uncover insights, detect patterns, and evaluate key metrics.
 
 📂 Dataset Information
+
 The Excel file includes the following key details:
     Claim ID: Unique identifier for each claim.
     Patient Information: Includes patient ID, age, gender, and other demographic details.
@@ -26,11 +28,13 @@ The Excel file includes the following key details:
     Status: Current status of the claim (approved, rejected, pending, etc.).
     
 🛠️ Tools and Techniques
+
     Excel Functions: Pivot tables, data validation, and lookup functions for data summarization.
     Data Cleaning: Handling missing values, standardizing codes, and ensuring data consistency.
     Visualization: Use Excel charts (bar, line, pie, and scatter plots) to create visual representations.
 
 🔍 Analysis Goals
+
 The analysis on this dataset aimed to achieve the following:
     Total Claims Amount by Service Type
     Average Insurance Payout per Provider
@@ -41,6 +45,7 @@ The analysis on this dataset aimed to achieve the following:
 
 
 **Customer Analysis**
+
 📝 Overview
 
 This Excel file titled "Customer_analysis.xls", designed for customer details analysis. The dataset includes customer details, subscription status, and churn indicators.
@@ -53,11 +58,13 @@ The Excel file includes the following key details:
     Region: Geographic distinction for location of customer.
     
 🛠️ Tools and Techniques
+
     Excel Functions: Pivot tables, data validation, and lookup functions for data summarization.
     Data Cleaning: Handling missing values, standardizing codes, and ensuring data consistency.
     Visualization: Use Excel charts (bar, line, pie, and scatter plots) to create visual representations.
 
 🔍 Analysis Goals
+
    The analysis on this dataset aimed to achieve the following:
     Excel formulas like SUMIFS, COUNTIFS, VLOOKUP, Extract, Concatenate, IF condition
     Sales trends by Month and Year
@@ -67,10 +74,13 @@ The Excel file includes the following key details:
 
 
 **Portfolio by Loan Type Analysis**
+
 📝 Overview
+
 This repository contains a macro-enabled Excel workbook titled "PortfoliobyLoanType.xlsm", designed for analyzing and visualizing loan portfolio trends over multiple fiscal years. The workbook contains financial data on various loan types, including Stafford Subsidized, Stafford Unsubsidized, Grad PLUS, Parent PLUS, Perkins, and Consolidation loans, along with recipient details. The macros automate data processing, report generation, and visualization, making the analysis streamlined and efficient.
 
 📂 Dataset Information
+
 The Excel workbook includes the following key details:
     Federal Fiscal Year: Year and quarter of the financial data.
     Loan Categories:
@@ -79,8 +89,22 @@ The Excel workbook includes the following key details:
         Perkins and Consolidation Loans
     Dollars Outstanding: Loan balance in billions.
     Recipients: Number of recipients in millions.
+       
+📊 Visualization and Reporting
 
-🔍 Analysis Goals
+The workbook includes automated visualizations through macros:
+
+    Line Chart:
+        Tracks the outstanding loan balance over time by loan type.
+    Bar Graph:
+        Compares the number of recipients across different loan categories.
+    Pie Chart:
+        Displays the loan portfolio composition by category.
+    Quarterly/Annual Summary Table:
+        Presents aggregated metrics for easy comparison.
+
+ 🔍 Analysis Goals
+ 
 The Portfolio by Loan Type Analysis aims to achieve the following insights:
     Loan Growth Trends:
         Track the growth or decline in outstanding balances for different loan types.
@@ -94,18 +118,6 @@ The Portfolio by Loan Type Analysis aims to achieve the following insights:
     Loan Composition Breakdown:
         Visualize the share of each loan type in the total portfolio.
         Assess diversification or concentration within the loan portfolio.
-        
-📊 Visualization and Reporting
-The workbook includes automated visualizations through macros:
-
-    Line Chart:
-        Tracks the outstanding loan balance over time by loan type.
-    Bar Graph:
-        Compares the number of recipients across different loan categories.
-    Pie Chart:
-        Displays the loan portfolio composition by category.
-    Quarterly/Annual Summary Table:
-        Presents aggregated metrics for easy comparison.
 
 🛠️ Tools and Techniques
     Formulas & Pivot Tables: Used for aggregation, calculations, and filtering.
