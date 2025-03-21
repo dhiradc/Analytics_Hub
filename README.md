@@ -30,18 +30,19 @@ With a strong background in product management, business analysis, and data-driv
 
 I share projects, insights, and technical solutions related to:
 
-    📂 Data Analytics & Business Intelligence
-    
-    🔍 FinTech Product Strategy & Risk Management
-    
-    📊 SQL Queries, Tableau Dashboards, and Process Automation
-    
-    🚀 Case Studies & Business Requirement Documentation (BRD)
+📂 Data Analytics & SQL Queries
+
+📊 BI Insights: Tableau Dashboards, and Process Automation
+
+🚀 Case Studies & Business Requirement Documentation (BRD)
+
+🔍 FinTech Product Strategy & Risk Management
+
 
 **📫 Let's Connect!**
 
 **🔗 LinkedIn | 📧 dhiradc@yahoo.com**
 
-This repository was created to showcase my analytical and technical skills (Excel, SQL, Tableau, PowerPoint, Word, UX/UI and others).
+This repository was created to showcase my analytical and technical skills (Excel, SQL, Tableau, PowerPoint and others).
 
 Always open to collaboration, knowledge sharing, and FinTech innovations! 🚀
