@@ -10,8 +10,6 @@ This is a sample case study and a proposal I defined. I have tried to include mo
 
 
 
-
-
 🚀 **Automated Employee Onboarding Process**
 
 Topic: Automated Employee Onboarding Process
@@ -28,8 +26,8 @@ Pre-Onboarding Phase:
 
 🛠️ Automated Action:
 
-1. System generates an offer letter and sends it via DocuSign.
-2. Automated background verification request is triggered.
+1. After recipt of HR confirmation for onborading, the System generates an offer letter and sends it via DocuSign to the candidate.
+2. It also trieggers and Automated background verification request, which will probably be done by a thirda party (this section is not included).
 
 Document Submission & Verification:
 
@@ -37,8 +35,8 @@ Document Submission & Verification:
 
 🛠️ Automated Action:
 
-1. System verifies ID documents using OCR (Optical Character Recognition).
-2. Status notification is sent to HR.
+1. Once the docs are received the system manager verifies ID documents using OCR (Optical Character Recognition).
+2. On Receipt of the status for the uploaded docs, system sends notification is sent to HR.
 
 Account Creation & IT Provisioning:
 
@@ -46,9 +44,9 @@ Account Creation & IT Provisioning:
 
 🛠️ Automated Action:
 
-1. System creates Active Directory and email accounts.
-2. Auto-assigns access to necessary tools (e.g., Jira, Confluence, Slack).
-3. IT team receives confirmation with access details.
+1. Once the "verified" status is confirmed by the HR, the system manager creates Active Directory and email accounts.
+2. It also auto-assigns the user id with access to necessary tools (e.g., Jira, Confluence, Slack).
+3. IT team receives confirmation with access details from the system manager.
 
 Training & Orientation:
 
@@ -56,8 +54,8 @@ Training & Orientation:
 
 🛠️ Automated Action:
 
-1. System sends welcome emails and calendar invites for training sessions.
-2. Assigns e-learning modules automatically.
+1. The system now sends welcome emails and calendar invites for training sessions.
+2. It also assigns e-learning modules automatically if there are any such modules meant for the onboarded role.
 
 Post-Onboarding Feedback:
 
@@ -65,8 +63,8 @@ Post-Onboarding Feedback:
 
 🛠️ Automated Action:
 
-1. System sends a feedback survey.
-2. Collects responses and generates a report for HR.
+1. The new employee sends a feedback survey back to the System Manager.
+2. The System Manager collects responses and generates a report for HR.
 
 🎯 Visio Elements Included:
 
@@ -77,9 +75,15 @@ Connectors & Arrows: To show the automation flow between systems.
 Color Coding: To indicate doer actions easily identifiable.
 
 
+
+
+
 🚀 **Multithreaded Process Flow**
 
-This diagram provides an explanation of the Multithreaded Process Flow. 
+Topic: Multithreaded Process Flow. 
+
+Description:
+
 The flow illustrates the interaction between three threads: Initiator Thread, Dispatcher Thread, and Worker Thread, and how they collaborate to process commands in a multithreaded system.
 
 Detailed Flow Description
@@ -104,26 +108,31 @@ Detailed Flow Description
 Key Components: These components are considered key as they maintain the main flow and the fallback mecahnism handling.
 
 1. Command Queue (FIFO):
+   
    a. A shared queue where commands are stored in a first-in, first-out order.
+   
    b. Acts as a buffer between Initiator and Dispatcher threads.
 
 2. Critical Section:
+   
    a. A mechanism to handle discrepancies or race conditions when accessing shared resources (e.g., Command Queue).
+   
    b. Ensures thread-safe operations in a multithreaded environment.
 
-Use Case Scenarios
+🎯 Use Case Scenarios:
 
-Task Scheduling Systems: Where tasks are queued and processed asynchronously by worker threads.
+Task Scheduling Systems: Where tasks are queued and processed asynchronously by worker threads. Example: Tasks created to make record moves from one stage to another without manual intervention.
+
 Multithreaded Servers: Handling client requests efficiently by delegating tasks to worker threads. For example, a automated ticketing system where messages have to be moved through stages.
 
-Diagram Legend
+🎯 Visio Elements Included:
 
 1. Black Circles: Represent start and end points of each thread's lifecycle.
 2. Rectangles: Represent states or actions performed by threads (e.g., idle, process command).
 3. Diamond Shape: Represents decision-making logic (e.g., checking if the queue is empty).
 4. Red Arrows: Indicate flow of control between states or threads.
 
-Notes on Implementation
+🎯 Notes on Implementation:
 
  It has to be ensured that proper synchronization mechanisms are used to prevent race conditions when accessing shared resources.
  The thread scheduling has to be optimized to avoid bottlenecks in the Dispatcher or Worker Threads.
