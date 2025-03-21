@@ -70,9 +70,111 @@ Post-Onboarding Feedback:
 
 🎯 Visio Elements Included:
 
-Swim lanes: To represent different departments (HR, IT, Hiring Manager).
+Swim lanes: To represent different departments (HR, IT, System Manager).
 
 Connectors & Arrows: To show the automation flow between systems.
 
 Color Coding: To indicate doer actions easily identifiable.
+
+
+🚀 **Multithreaded Process Flow**
+
+This diagram provides an explanation of the Multithreaded Process Flow. 
+The flow illustrates the interaction between three threads: Initiator Thread, Dispatcher Thread, and Worker Thread, and how they collaborate to process commands in a multithreaded system.
+
+Overview of Threads
+
+  📌  Initiator Thread:
+
+        Represents the user or system-initiated actions.
+
+        Responsible for posting commands to the system when a user takes an action.
+
+        Operates in an idle state until an action triggers it.
+
+  📌  Dispatcher Thread:
+
+        Continuously monitors a FIFO (First In, First Out) Command Queue for new commands.
+
+        Dispatches commands to the Worker Thread for processing.
+
+        Returns to an idle state if the queue is empty.
+
+  📌  Worker Thread:
+
+        Handles the actual processing of commands dispatched by the Dispatcher Thread.
+
+        Operates independently to execute tasks without blocking other threads.
+
+Detailed Flow Description
+
+🛠️Initiator Thread
+
+    Starts in an idle state.
+
+    When a user takes an action, the system generates a command and posts it to the Command Queue (FIFO).
+
+    Returns to idle after posting the command.
+
+🛠️Dispatcher Thread
+
+    Starts in an idle state and continuously checks the Command Queue for new commands.
+
+    If the queue is empty, it remains idle.
+
+    If there are commands in the queue:
+
+        It retrieves and dispatches a command to the Worker Thread for processing.
+
+        Handles discrepancies or conflicts using a critical section to ensure thread safety.
+
+🛠️Worker Thread
+
+    Receives commands from the Dispatcher Thread.
+
+    Processes each command independently.
+
+    Completes its task and awaits further commands.
+
+Key Components
+
+1. Command Queue (FIFO):
+
+    A shared queue where commands are stored in a first-in, first-out order.
+
+    Acts as a buffer between Initiator and Dispatcher threads.
+
+2. Critical Section:
+
+    A mechanism to handle discrepancies or race conditions when accessing shared resources (e.g., Command Queue).
+
+    Ensures thread-safe operations in a multithreaded environment.
+
+Use Case Scenarios
+
+    User Interaction Systems: For example, GUI-based applications where user actions trigger background tasks.
+
+    Task Scheduling Systems: Where tasks are queued and processed asynchronously by worker threads.
+
+    Multithreaded Servers: Handling client requests efficiently by delegating tasks to worker threads.
+
+Diagram Legend
+
+    Black Circles: Represent start and end points of each thread's lifecycle.
+
+    Rectangles: Represent states or actions performed by threads (e.g., idle, process command).
+
+    Diamond Shape: Represents decision-making logic (e.g., checking if the queue is empty).
+
+    Red Arrows: Indicate flow of control between states or threads.
+
+Notes on Implementation
+
+    Ensure proper synchronization mechanisms are used to prevent race conditions when accessing shared resources.
+
+    Optimize thread scheduling to avoid bottlenecks in the Dispatcher or Worker Threads.
+
+    Implement error handling within critical sections to manage discrepancies effectively.
+
+This diagram serves as a conceptual guide for designing robust multithreaded systems with clear separation of responsibilities among threads.
 
