@@ -34,7 +34,7 @@ I share projects, insights, and technical solutions related to:
 
 📊 BI Insights: Tableau Dashboards, and Process Automation
 
-🚀 Case Studies & Business Requirement Documentation (BRD)
+🚀 Case Studies, Process Flow Diagrams & Business Requirement Documentation (BRD)
 
 🔍 FinTech Product Strategy & Risk Management
 
