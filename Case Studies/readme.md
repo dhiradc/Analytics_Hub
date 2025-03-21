@@ -24,10 +24,12 @@ Process Steps:
 
 Pre-Onboarding Phase:
 
-    📌 Trigger: HR receives a new hire confirmation.
-    🛠️ Automated Action:
-        System generates an offer letter and sends it via DocuSign.
-        Automated background verification request is triggered.
+📌 Trigger: HR receives a new hire confirmation.
+
+🛠️ Automated Action:
+
+1. System generates an offer letter and sends it via DocuSign.
+2. Automated background verification request is triggered.
 
 Document Submission & Verification:
 
