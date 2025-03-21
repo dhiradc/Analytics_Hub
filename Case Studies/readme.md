@@ -82,99 +82,52 @@ Color Coding: To indicate doer actions easily identifiable.
 This diagram provides an explanation of the Multithreaded Process Flow. 
 The flow illustrates the interaction between three threads: Initiator Thread, Dispatcher Thread, and Worker Thread, and how they collaborate to process commands in a multithreaded system.
 
-Overview of Threads
-
-  📌  Initiator Thread:
-
-        Represents the user or system-initiated actions.
-
-        Responsible for posting commands to the system when a user takes an action.
-
-        Operates in an idle state until an action triggers it.
-
-  📌  Dispatcher Thread:
-
-        Continuously monitors a FIFO (First In, First Out) Command Queue for new commands.
-
-        Dispatches commands to the Worker Thread for processing.
-
-        Returns to an idle state if the queue is empty.
-
-  📌  Worker Thread:
-
-        Handles the actual processing of commands dispatched by the Dispatcher Thread.
-
-        Operates independently to execute tasks without blocking other threads.
-
 Detailed Flow Description
 
-🛠️Initiator Thread
+📌 Initiator Thread
+1. The thread starts in an idle state.
+2. When a user takes an action, the system generates a command and posts it to the Command Queue (FIFO).
+3. The thread returns to idle after posting the command.
 
-    Starts in an idle state.
+📌 Dispatcher Thread
+1. The thread starts in an idle state and continuously checks the Command Queue for new commands.
+2. In case, the queue is empty, the thread remains idle.
+3. If there are commands in the queue:
+   a. It retrieves and dispatches a command to the Worker Thread for processing.
+   b. Handles discrepancies or conflicts using a critical section to ensure thread safety.
 
-    When a user takes an action, the system generates a command and posts it to the Command Queue (FIFO).
+📌 Worker Thread
+1. This thread receives the commands from the Dispatcher Thread.
+2. It then processes each command independently.
+3. Once the task is completed, it awaits further commands.
 
-    Returns to idle after posting the command.
-
-🛠️Dispatcher Thread
-
-    Starts in an idle state and continuously checks the Command Queue for new commands.
-
-    If the queue is empty, it remains idle.
-
-    If there are commands in the queue:
-
-        It retrieves and dispatches a command to the Worker Thread for processing.
-
-        Handles discrepancies or conflicts using a critical section to ensure thread safety.
-
-🛠️Worker Thread
-
-    Receives commands from the Dispatcher Thread.
-
-    Processes each command independently.
-
-    Completes its task and awaits further commands.
-
-Key Components
+Key Components: These components are considered key as they maintain the main flow and the fallback mecahnism handling.
 
 1. Command Queue (FIFO):
-
-    A shared queue where commands are stored in a first-in, first-out order.
-
-    Acts as a buffer between Initiator and Dispatcher threads.
+   a. A shared queue where commands are stored in a first-in, first-out order.
+   b. Acts as a buffer between Initiator and Dispatcher threads.
 
 2. Critical Section:
-
-    A mechanism to handle discrepancies or race conditions when accessing shared resources (e.g., Command Queue).
-
-    Ensures thread-safe operations in a multithreaded environment.
+   a. A mechanism to handle discrepancies or race conditions when accessing shared resources (e.g., Command Queue).
+   b. Ensures thread-safe operations in a multithreaded environment.
 
 Use Case Scenarios
 
-    User Interaction Systems: For example, GUI-based applications where user actions trigger background tasks.
-
-    Task Scheduling Systems: Where tasks are queued and processed asynchronously by worker threads.
-
-    Multithreaded Servers: Handling client requests efficiently by delegating tasks to worker threads.
+Task Scheduling Systems: Where tasks are queued and processed asynchronously by worker threads.
+Multithreaded Servers: Handling client requests efficiently by delegating tasks to worker threads. For example, a automated ticketing system where messages have to be moved through stages.
 
 Diagram Legend
 
-    Black Circles: Represent start and end points of each thread's lifecycle.
-
-    Rectangles: Represent states or actions performed by threads (e.g., idle, process command).
-
-    Diamond Shape: Represents decision-making logic (e.g., checking if the queue is empty).
-
-    Red Arrows: Indicate flow of control between states or threads.
+1. Black Circles: Represent start and end points of each thread's lifecycle.
+2. Rectangles: Represent states or actions performed by threads (e.g., idle, process command).
+3. Diamond Shape: Represents decision-making logic (e.g., checking if the queue is empty).
+4. Red Arrows: Indicate flow of control between states or threads.
 
 Notes on Implementation
 
-    Ensure proper synchronization mechanisms are used to prevent race conditions when accessing shared resources.
-
-    Optimize thread scheduling to avoid bottlenecks in the Dispatcher or Worker Threads.
-
-    Implement error handling within critical sections to manage discrepancies effectively.
+ It has to be ensured that proper synchronization mechanisms are used to prevent race conditions when accessing shared resources.
+ The thread scheduling has to be optimized to avoid bottlenecks in the Dispatcher or Worker Threads.
+ Error handling has to be robust within critical sections to manage discrepancies effectively.
 
 This diagram serves as a conceptual guide for designing robust multithreaded systems with clear separation of responsibilities among threads.
 
