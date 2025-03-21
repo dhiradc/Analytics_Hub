@@ -13,19 +13,25 @@ With a strong background in product management, business analysis, and data-driv
 **🔹 Key Skills & Expertise**
 
 💡 Data-Driven Decision Making – SQL, Excel, Tableau
+
 📊 Strategic Product Management – Prioritization, Roadmaps, Agile & SAFe, Waterfall
+
 📈 Business Process Optimization – Risk Mitigation, Cost-Benefit Analysis, Root Cause Analysis, Capacity Management
 
 🔗 Cross-Functional Leadership – Collaboration with Engineering, Design(UX/UI), and Product Teams
+
 🎯 Client & Stakeholder Engagement – Stakeholder Management, Presentations, Product Demos, Reporting
 
-**🔹 What You’ll Find Here **
+**🔹 What You’ll Find Here**
 
 I share projects, insights, and technical solutions related to:
 
     📂 Data Analytics & Business Intelligence
+    
     🔍 FinTech Product Strategy & Risk Management
+    
     📊 SQL Queries, Tableau Dashboards, and Process Automation
+    
     🚀 Case Studies & Business Requirement Documentation (BRD)
 
 **📫 Let's Connect!**
