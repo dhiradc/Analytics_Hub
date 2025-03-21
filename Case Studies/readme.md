@@ -46,9 +46,9 @@ Account Creation & IT Provisioning:
 
 🛠️ Automated Action:
 
-1.System creates Active Directory and email accounts.
-2.Auto-assigns access to necessary tools (e.g., Jira, Confluence, Slack).
-3.IT team receives confirmation with access details.
+1. System creates Active Directory and email accounts.
+2. Auto-assigns access to necessary tools (e.g., Jira, Confluence, Slack).
+3. IT team receives confirmation with access details.
 
 Training & Orientation:
 
