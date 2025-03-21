@@ -1,4 +1,4 @@
-🚀 CaseStudy Project Management
+🚀 **CaseStudy Project Management**
 
 Topic: Project delivery steps
 
@@ -12,7 +12,7 @@ This is a sample case study and a proposal I defined. I have tried to include mo
 
 
 
-🚀 Automated Employee Onboarding Process
+🚀 **Automated Employee Onboarding Process**
 
 Topic: Automated Employee Onboarding Process
 
