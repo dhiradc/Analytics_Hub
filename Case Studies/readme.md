@@ -145,7 +145,7 @@ This diagram serves as a conceptual guide for designing robust multithreaded sys
 
 Topic: Created a Visio process map outlining how AI-driven automation enhances the customer support ticket resolution workflow. This map will demonstrate how AI handles ticket classification, routing, and resolution, reducing manual effort and accelerating response times.
 
-📌 Ticket Creation & Categorization:
+📌 Ticket Creation & Categorization: Customer submits a support request via email, chat, or web form.
 
 🤖 AI-Powered Action
 
