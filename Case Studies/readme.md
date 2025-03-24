@@ -140,3 +140,42 @@ Multithreaded Servers: Handling client requests efficiently by delegating tasks 
 
 This diagram serves as a conceptual guide for designing robust multithreaded systems with clear separation of responsibilities among threads.
 
+
+🚀 **AI-Powered Customer Support Ticket Resolution Process**
+
+Topic: Created a Visio process map outlining how AI-driven automation enhances the customer support ticket resolution workflow. This map will demonstrate how AI handles ticket classification, routing, and resolution, reducing manual effort and accelerating response times.
+
+📌 Ticket Creation & Categorization:
+
+🤖 AI-Powered Action
+
+1. NLP (Natural Language Processing) analyzes the ticket content. It automatically extracts key details: issue type, urgency, and sentiment.
+2. AI bot classifies the category and priority level(eg. Billing, Technical, etc.)
+
+📌 Auto-Routing & Assignment
+
+🤖 AI-Powered Action
+
+1. AI auto-routes the ticket based on: matches the predefined categories. AI Historically routes to the appropriate team based on past issue types.
+2. Smart workload balancing ensures tickets are marked for exact department.
+
+📌 Automated Resolution & Self-Service
+
+🤖 AI-Powered Action
+
+1. AI chatbot here suggests automated solutions using a knowledge base.
+2. If the issue is simple (e.g., password reset), the Chat Bot provides an instant solution.
+3. For complex issues, the bot gathers details and attaches them to the ticket.
+
+📌 Ticket Escalation & Human Intervention: Manual Action
+
+1. The ticket is escalated to a human agent for action.
+2. AI assists the agent by providing Contextual data (ticket history, customer profile) and past resolution history.
+
+📌 Ticket Closure & Feedback: Issue is resolved.
+
+1. AI Generates reports and insights on resolution times, customer satisfaction, and edge case. if any (both for ChatBot resolution and manual resolution).
+2. Issue is marked resolved.
+3. History is updated for this record in the relevant category.
+
+
