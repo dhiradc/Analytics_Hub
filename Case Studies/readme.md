@@ -10,6 +10,9 @@ This is a sample case study and a proposal I defined. I have tried to include mo
 
 
 
+
+
+
 🚀 **Automated Employee Onboarding Process**
 
 Topic: Automated Employee Onboarding Process
@@ -141,6 +144,8 @@ Multithreaded Servers: Handling client requests efficiently by delegating tasks 
 This diagram serves as a conceptual guide for designing robust multithreaded systems with clear separation of responsibilities among threads.
 
 
+
+
 🚀 **AI-Powered Customer Support Ticket Resolution Process**
 
 Topic: Created a Visio process map outlining how AI-driven automation enhances the customer support ticket resolution workflow. This map will demonstrate how AI handles ticket classification, routing, and resolution, reducing manual effort and accelerating response times.
@@ -178,4 +183,10 @@ Topic: Created a Visio process map outlining how AI-driven automation enhances t
 2. Issue is marked resolved.
 3. History is updated for this record in the relevant category.
 
+🎯 Visio Elements Included:
+
+1. Black Circles: Represent start and end points of each request lifecycle.
+2. Rectangles: Represent states or actions performed by entities between swim lanes.
+3. Diamond Shape: Represents decision-making logic (e.g., checking if the request is valid).
+4. Arrows: Indicate flow of control between actions
 
