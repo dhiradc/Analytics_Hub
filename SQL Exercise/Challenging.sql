@@ -1,5 +1,5 @@
 💡 Medium Level:
-1️⃣ Write a query to find the second highest salary in an employee table.
+1️. Write a query to find the second highest salary in an employee table.
 create table Employees
 (
   Employee_ID integer,
@@ -12,7 +12,7 @@ insert into Employees values (1,'JOHN', 7000), (2,'SARAH', 9000), (3,'JOSE', 500
 select Employees.Employee_ID, Employees.Employee_Name from Employees ORDER BY Employees.Employee_Salary DESC  LIMIT 1 OFFSET 1;
 /*this is if there are no duplicate salaries. If there is a duplicate then we have to use DENSE_RANK() function.*/
 
-2️⃣ Fetch all employees whose names contain the letter “a” exactly twice.
+2️. Fetch all employees whose names contain the letter “a” exactly twice.
 WITH CountofEmployees AS
 (SELECT 
     first_name,
@@ -24,7 +24,7 @@ select E.first_name, E.last_name from employees E
 JOIN CountofEmployees CE ON CE.first_name = E.first_name
 where CE.occurrence_count = 2;
 
-3️⃣ How do you retrieve only duplicate records from a table?
+3️. How do you retrieve only duplicate records from a table?
 Create TABLE Duplicates
 (
   ID integer,
@@ -42,7 +42,7 @@ WITH DUP as
 from Duplicates)
 select ID, Name, Profession from DUP where DRN >= 2;
 
-4️⃣ Write a query to calculate the running total of sales by date.
+4️. Write a query to calculate the running total of sales by date.
 CREATE TABLE Sales
 (
 	sale_id	integer,
@@ -64,7 +64,9 @@ FROM Sales
 GROUP BY sale_date
 ORDER BY sale_date;
 
-5️⃣ Find employees who earn more than the average salary in their department.
+/* If you are tryign to find out consequtive rows difference/sum then use this as ORDER BY:ORDER BY sale_date ROWS BETWEEN 1 PRECEDING AND CURRENT ROW*/
+
+5️. Find employees who earn more than the average salary in their department.
 /* I have used the employees table created above for this query too*/
 With AVGSalaryDept as
 (
@@ -80,7 +82,7 @@ ON E.department_id = ASD.department_id
 WHERE E.salary > ASD.AVGDeptSalary
 ORDER BY E.department_id;
 
-6️⃣ Write a query to find the most frequently occurring value in a column.
+6️. Write a query to find the most frequently occurring value in a column.
 /* This query can be changed to find second most, third mosrt or any number as its using DENSE_RANK() function which ranks each group uniquely. Using a LIMIT keyword will only return one result which might not be correct
 if the table can contain duplicate values for count of value occuring in the column count.
 Here, I have used the same employee table and tried to find the most frequently occuring department_id for the column department_id*/
@@ -94,7 +96,7 @@ GROUP by department_id)
 
 select department_id,frequency from GROUPEDOCCURANCE where DRN = 1;
 
-7️⃣ Fetch records where the date is within the last 7 days from today.
+7️. Fetch records where the date is within the last 7 days from today.
 CREATE TABLE PurchasesToday
 (
 	purchase_id	integer,
@@ -136,7 +138,7 @@ INSERT INTO PurchasesToday VALUES
 
 select * from PurchasesToday where sale_date BETWEEN DATE(format(date(),'mm/dd/yyyy'), '-7 days') AND format(date(),'mm/dd/yyyy') ;
 
-8️⃣ Write a query to count how many Customers share the same expenditure.
+8️. Write a query to count how many Customers share the same expenditure.
 create table CustomerExpenditure
  (order_id integer,
  customer_id integer, 
@@ -157,7 +159,7 @@ create table CustomerExpenditure
  
   select count(customer_id) as numberOfCustomer, amount as Expenditure from CustomerExpenditure group by amount;
   
-9️⃣ How do you fetch the top 2 records for each group in a table?
+9️. How do you fetch the top 2 records for each group in a table?
 /* I have resued the employees table and grouped by department_id and found employees who have the TOP 2 salaries. You can use this for any number associated to detecting the TOP<number> */
 With RANKS AS
 (
@@ -166,7 +168,7 @@ With RANKS AS
 
 select employee_id,salary,department_id from RANKS where DRN <=2;
 
-🔟 Retrieve products that were never sold.
+10. Retrieve products that were never sold.
 CREATE TABLE Products
 (
   product_id integer,
@@ -188,7 +190,7 @@ CREATE TABLE Orders
  WHERE O.order_id IS NULL;
  
 💡 Challenging Level:
-1️⃣ Retrieve customers who made their first purchase in the last 6 months.
+1️. Retrieve customers who made their first purchase in the last 6 months.
 create table Customers
 (
   customer_id integer,
@@ -215,7 +217,7 @@ select customer_id, MIN(purchase_date) as first_purchase_date from Purchases
 group by customer_id
 HAVING MIN(purchase_date) BETWEEN DATE(format(date(),'mm/dd/yyyy'), '-6 months') AND format(date(),'mm/dd/yyyy');
 
-2️⃣ How do you pivot a table to convert rows(horizontal) into columns(vertical)?
+2️. How do you pivot a table to convert rows(horizontal) into columns(vertical)?
 CREATE TABLE ProductsRows
 (
   product_id integer,
@@ -241,7 +243,7 @@ select product_id as Product,
 	   store3 as price
 from ProductsRows;
 
-3️⃣ Write a query to calculate the percentage change in sales month-over-month.
+3️. Write a query to calculate the percentage change in sales month-over-month.
 CREATE TABLE monthly_sales (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     sale_date DATE NOT NULL,
@@ -279,7 +281,7 @@ percentageChange AS
 
 SELECT * from percentageChange;
 
-4️⃣ Find the median salary of employees in a table.
+4️. Find the median salary of employees in a table.
 create table Employees
 (
   Employee_ID integer,
@@ -297,7 +299,7 @@ from Employees)
 select AVG(Employee_Salary) from CTE WHERE ABS(RN_ASC - RN_DESC) <= 1;
 /* this query will work for both even number of records as well as odd number of records*/
 
-5️⃣ Fetch all users who logged in consecutively for 3 days
+5️. Fetch all users who logged in consecutively for 3 days
 CREATE TABLE user_logins (
     user_id INTEGER NOT NULL,
     login_date DATE NOT NULL
@@ -330,7 +332,7 @@ WITH consLogins as
 select user_id from consLogins
 where  julianday(login_date) - julianday(Prev_Login) = 1 AND julianday(Next_Login) - julianday(login_date) = 1 group by user_id;
 
-6️⃣ Write a query to delete duplicate rows while keeping one occurrence(the first one is maintained).
+6️. Write a query to delete duplicate rows while keeping one occurrence(the first one is maintained).
 Create TABLE Duplicates
 (
   ID integer,
@@ -348,7 +350,7 @@ WITH DUP as
 from Duplicates)
 DELETE from Duplicates where ID IN (select ID from DUP where DRN >= 2);
 
-7️⃣ Create a query to calculate the ratio of sales between two categories.
+7️. Create a query to calculate the ratio of sales between two categories.
 CREATE TABLE sales_data (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     category TEXT NOT NULL,
@@ -375,7 +377,7 @@ WITH RATIOCOUNT AS
 SELECT ROUND((SELECT TotalSales from RATIOCOUNT where RN = 1)*1.0/(SELECT TotalSales from RATIOCOUNT where RN = 2),2) as Sales_Ratio;
 /* This query is very generic provided there are only two categories of products in the master data table. You dont need to know the category names as you are applying row number to the two rows of summation achieved.*/
 
-8️⃣ How would you implement a recursive query to generate a hierarchical structure?
+8️. How would you implement a recursive query to generate a hierarchical structure?
 CREATE TABLE employees (
     id INTEGER PRIMARY KEY,
     name TEXT NOT NULL,
@@ -412,7 +414,7 @@ WITH RECURSIVE employee_hierarchy AS (
 )
 SELECT * FROM employee_hierarchy ORDER BY level, id;
 
-9️⃣ Write a query to find gaps in sequential numbering within a table.
+9️. Write a query to find gaps in sequential numbering within a table.
 CREATE TABLE SeqItems (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT NOT NULL
@@ -455,7 +457,7 @@ RecursiveMissing AS (
 )
 SELECT MissingNumber FROM RecursiveMissing;
 
-🔟 Split FULL NAME in first name and last name
+10. Split FULL NAME in first name and last name
 CREATE TABLE UserName
 (
   id integer,
@@ -473,7 +475,7 @@ SUBSTRING(fullname, CHARINDEX(' ', fullname) + 1, length(fullname)) AS LastName
 FROM UserName;
 
 💡 Advanced Problem-Solving:
-1️⃣ Rank products by sales in descending order for each region.
+1️. Rank products by sales in descending order for each region.
 CREATE TABLE product_sales (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     region TEXT NOT NULL,
@@ -490,7 +492,7 @@ select region, product_name, sales_amount,
   		 DENSE_RANK() OVER(PARTITION BY region Order by sales_amount DESC) as RankedProducts
 from product_sales;
 
-2️⃣ Fetch all employees whose salaries fall within the top 10% of their department.
+2️. Fetch all employees whose salaries fall within the top 10% of their department.
 CREATE TABLE EmployeesDepartment
 (
   employee_id integer,
@@ -512,7 +514,7 @@ SELECT employee_id, department_id, salary
 FROM SalaryRank
 WHERE salary_rank <= (0.10*total_employees);
 
-3️⃣ Identify orders placed during business hours (e.g., 9 AM to 6 PM).
+3️. Identify orders placed during business hours (e.g., 9 AM to 6 PM).
 CREATE TABLE OrdersPlaced (
     order_id INTEGER PRIMARY KEY AUTOINCREMENT,
     customer_id INTEGER NOT NULL,
@@ -544,7 +546,7 @@ INSERT INTO OrdersPlaced (customer_id, order_datetime) VALUES
 SELECT * FROM OrdersPlaced
 WHERE strftime('%H', order_datetime) BETWEEN '09' AND '17';
 
-4️⃣ Write a query to get the count of users active on both weekdays and weekends.
+4️. Write a query to get the count of users active on both weekdays and weekends.
 CREATE TABLE UserLoginData (
     login_id INTEGER PRIMARY KEY AUTOINCREMENT,
     user_id INTEGER NOT NULL,
@@ -589,7 +591,7 @@ group by user_id)
 
 select COUNT(DISTINCT user_id) from loginBothDays where CNTWE > 0 AND CNTWD > 0;
 
-5️⃣ Retrieve customers who made purchases across at least three different categories.
+5️. Retrieve customers who made purchases across at least three different categories.
 create table CustomerSales(
 sale_id INTEGER PRIMARY KEY,
 customer_id INTEGER,
