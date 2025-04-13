@@ -1,7 +1,7 @@
 # 📊 Tableau Practice Exercises
 
 ## 📌 Overview
-This repository contains a collection of practice exercises for Tableau, designed to improve data visualization skills and mastery of Tableau features.
+This repository contains a collection of practice exercises for Tableau, designed to improve data visualization skills and mastery of great Tableau features.
 
 ## 📂 Contents
 The exercises cover a variety of Tableau functionalities, including:
