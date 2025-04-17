@@ -1,6 +1,8 @@
 # 📊 SQL-Analysis-SQL-Queries-Reports  
 
-Welcome to the **Common SQL Queries** repository! 🚀 
+Welcome to the **Common SQL Queries** repository!
+
+🚀 
 Description: This repository contains SQL queries that I was writing to accomplish different tasks during different courses. The main goal is to improve SQL knowledge and fluency.
 Skills: This repository contains a collection of frequently used SQL queries for various use cases, including data retrieval, aggregation, filtering, and advanced analysis.  
 
