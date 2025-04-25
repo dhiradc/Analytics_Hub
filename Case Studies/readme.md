@@ -11,6 +11,24 @@ This is a sample case study and a proposal I defined. I have tried to include mo
 
 
 
+🚀 **JIRA Story Mockup**
+
+Topic: Healthcare Scenario : Enable Appeal Status Tracking for Member Support Team
+
+
+This is a use case study and a Jira Story I tried to define. 
+I have tried to include most relevant practices of documentation associated to common deliverables as a Business Analyst:
+Important topics to include are:
+1. Your story should have a appropriate title.
+2. The Description section should detail out the exact criterias to be met. You can include the deailed format of the Use Case you are trying to target as a part of the story
+3. The Acceptance Criteria of the User Story has been written in the Gherkin Format to include scenarios in the GIVEN, WHEN and THEN format.
+4. If you want to attach any supporting documents, then you can do so in the attachments section of the JIRA story template provided.
+5. You can include dependencies, if any, that needs to be fulfilled to carry out the scenarios.
+6. You can include directions that need to be shared for exact testing conditions.
+7. If you have written this story as a result of some BUG ticket, you can include that in the Linked Issues section.
+
+
+
 
 
 🚀 **Automated Employee Onboarding Process**
